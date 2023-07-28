@@ -2,12 +2,10 @@
   <div class="row">
     <div class="col-12 col-md-8 col-lg-6">
       <h1>Animations</h1>
-      <button class="btn btn-primary mr-2">Animate!</button>
+      <button class="btn btn-primary mr-2" (click)="onAnimate()">Animate!</button>
       <button class="btn btn-primary mr-2">Shrink!</button>
       <hr>
-      <div
-        style="width: 100px; height: 100px;"
-        [@divState]="state">
+      <div style="width: 100px; height: 100px;" [@divState]="state">
 
       </div>
     </div>
@@ -19,7 +17,7 @@
       <button class="btn btn-primary mt-2" (click)="onAdd(input.value)">Add Item!</button>
       <hr>
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let item of list">
+        <li class="list-group-item" *ngFor="let item of list" (click)="onDelete(item)">
           {{ item }}
         </li>
       </ul>
@@ -29,7 +27,7 @@
   <div class="row">
     <div class="col-12 col-md-8 col-lg-6">
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let item of list">
+        <li class="list-group-item" *ngFor="let item of list" (click)="onDelete(item)">
           {{ item }}
         </li>
       </ul>
