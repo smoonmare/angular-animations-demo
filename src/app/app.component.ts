@@ -14,17 +14,40 @@ import { Component } from '@angular/core';
         backgroundColor: 'blue',
         transform: 'translateX(100px)'
       })),
+      transition('normal <=> highlighted', animate(300)),
+      // transition('highlighted => normal', animate(600)),
+    ]),
+    trigger('wildDivState', [
+      state('normal', style({
+        backgroundColor: 'red',
+        transform: 'translateX(0px) scale(1)'
+      })),
+      state('highlighted', style({
+        backgroundColor: 'blue',
+        transform: 'translateX(100px) scale(1)'
+      })),
+      state('shrunken', style({
+        backgroundColor: 'green',
+        transform: 'translateX(0px) scale(0.5)'
+      })),
       transition('normal => highlighted', animate(300)),
-      transition('highlighted => normal', animate(600))
+      transition('highlighted => normal', animate(600)),
+      transition('shrunken <=> *', animate(500))
     ])
   ]
 })
 export class AppComponent {
   state = 'normal';
+  wildState = 'normal';
   list = ['Milk', 'Sugar', 'Bread'];
 
   onAnimate() {
     this.state === 'normal' ? this.state = 'highlighted' : this.state = 'normal';
+    this.wildState === 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal';
+  }
+
+  onShrink() {
+    this.wildState = 'shrunken'
   }
 
   onAdd(item: string) {
