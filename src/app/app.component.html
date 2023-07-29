@@ -21,7 +21,7 @@
       <button class="btn btn-primary mt-2" (click)="onAdd(input.value)">Add Item!</button>
       <hr>
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let item of list" (click)="onDelete(item)">
+        <li class="list-group-item" *ngFor="let item of list" (click)="onDelete(item)" [@list1]>
           {{ item }}
         </li>
       </ul>
