@@ -1,4 +1,4 @@
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { animate, group, keyframes, state, style, transition, trigger, AnimationEvent } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -89,10 +89,15 @@ import { Component } from '@angular/core';
         ]))
       ]),
       transition('* => void', [
-        animate(300, style({
-          opacity: 1,
-          transform: 'translateX(100px)'
-        }))
+        group([
+          animate(300, style({
+            color: 'red'
+          })),
+          animate(800, style({
+            opacity: 0,
+            transform: 'translateX(100px)'
+          }))
+        ])
       ]),
     ])
   ]
@@ -106,6 +111,14 @@ export class AppComponent {
   onAnimate() {
     this.state === 'normal' ? this.state = 'highlighted' : this.state = 'normal';
     this.wildState === 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal';
+  }
+
+  animationStart(event: AnimationEvent) {
+    console.log(event);
+  }
+
+  animationDone(event: AnimationEvent) {
+    console.log(event);
   }
 
   onShrink() {
