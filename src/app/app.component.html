@@ -31,7 +31,7 @@
   <div class="row">
     <div class="col-12 col-md-8 col-lg-6">
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let item of list" (click)="onDelete(item)">
+        <li class="list-group-item" *ngFor="let item of list" (click)="onDelete(item)" [@list2]>
           {{ item }}
         </li>
       </ul>
